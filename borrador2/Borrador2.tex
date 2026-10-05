@@ -1,0 +1,463 @@
+        % ============================================================
+%  Plantilla LaTeX para Trabajos de Título Escuela de Ingeniería
+%  Adaptada desde la plantilla oficial en Word
+% ============================================================
+\documentclass[12pt,letterpaper]{report}
+
+% ---------- Idioma y codificación ----------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+
+% ---------- Márgenes  ----------
+\usepackage[top=2.54cm,bottom=2.54cm,left=2.54cm,right=2.54cm]{geometry}
+
+% ---------- Tipografía, Escritura de Fórmulas y Códigos de Fuente ----------
+\usepackage[defaultsans]{opensans} % Tipo de letra del documento (solo reemplaza sans-serif, más liviano que 'default')
+\usepackage{sansmathaccent}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% ---------- Código fuente (listings en vez de minted: sin shell-escape, compila mucho más rápido) ----------
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{uohblue}{HTML}{1F7AC2}
+\definecolor{uohgray}{HTML}{595959}
+\definecolor{codebg}{HTML}{F7F7F7}
+\definecolor{codegreen}{HTML}{2E7D32}
+
+\lstdefinestyle{pythonstyle}{
+    language=Python,
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{uohblue}\bfseries,
+    commentstyle=\color{uohgray}\itshape,
+    stringstyle=\color{codegreen},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    numbersep=8pt,
+    breaklines=true,
+    breakatwhitespace=false,
+    showstringspaces=false,
+    frame=single,
+    rulecolor=\color{uohgray},
+    tabsize=4,
+    captionpos=b
+}
+\lstset{style=pythonstyle}
+
+% ---------- Paquetes para tablas ----------
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+% ---------- Interlineado y espaciado de párrafo ----------
+\usepackage{setspace}
+\onehalfspacing % interlineado 1.5, similar a la lectura cómoda del original
+\usepackage{indentfirst} % sangría en la primera línea de cada párrafo (como el original)
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+
+% ---------- Imágenes ----------
+\usepackage{graphicx}
+\graphicspath{{img/}}
+
+% ---------- Hipervínculos ----------
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=uohblue,
+    citecolor=black,
+    pdftitle={Evaluación y fortalecimiento de la seguridad de software y arquitectura de la plataforma Maria.ag},
+    pdfauthor={Felipe Sebastián Suárez González},
+    pdfsubject={Trabajo de título o grado},
+    bookmarksnumbered=true
+}
+
+% ---------- Títulos de sección ----------
+\usepackage{titlesec}
+% Estilo de los capítulos/secciones: centrado, en negrita, sin numeración
+% (el Word original no numera las secciones del cuerpo)
+\titleformat{\chapter}[block]
+  {\centering\bfseries\large}
+  {}{0pt}{}
+\titlespacing{\chapter}{0pt}{0pt}{24pt}
+
+% ---------- Índice con puntos guía (estilo Word) ----------
+\usepackage{tocloft}
+\renewcommand{\cftchapfont}{\bfseries}
+\renewcommand{\cftchappagefont}{\bfseries}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftbeforechapskip}{6pt}
+\renewcommand{\cfttoctitlefont}{\hfill\bfseries\large}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% ---------- Citas y referencias bibliográficas (formato APA) ----------
+\usepackage[backend=biber,style=ieee]{biblatex}
+\usepackage{csquotes}
+\addbibresource{referencias2.bib}
+
+% ---------- Listas (para hipótesis, objetivos, preguntas con viñetas) ----------
+\usepackage{enumitem}
+
+
+% ============================================================
+\begin{document}
+% ------------------------------------------------------------
+% PORTADA
+% ------------------------------------------------------------
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+
+    \includegraphics[width=7cm]{logo_uoh.png}\\[0.3cm]
+    {\large Escuela de Ingeniería\\
+    Ingeniería Civil en Computación}\\[2.5cm]
+
+    \begin{minipage}{0.8\textwidth}
+        \centering
+        {\bfseries\Large Evaluación y fortalecimiento de la seguridad de software y arquitectura de la plataforma Maria.ag}
+    \end{minipage}\\[2cm]
+
+    {\large Felipe Sebastián Suárez González}\\[0.3cm]
+    {\large Profesor guía: Edgardo Ortiz}\\[2cm]
+
+    {Memoria para optar al título de ingeniero civil en computación}\\
+
+    \vfill
+
+    {Rancagua, Chile\\
+    2026}
+
+    \vspace*{1cm}
+\end{titlepage}
+% ------------------------------------------------------------
+% DECLARACIÓN USO IA
+% ------------------------------------------------------------
+\chapter*{Declaración de uso de Inteligencia Artificial}
+
+\textit{[Esta sección debe completarse indicando si se utilizó inteligencia artificial generativa en la elaboración del trabajo de título. En caso afirmativo, siga el formato sugerido a continuación; en caso negativo, indique explícitamente que no se utilizaron herramientas de IA generativa.]}
+
+\vspace{0.3cm}
+
+\textbf{Formato sugerido (si hubo uso de IA):}
+
+En la elaboración de este trabajo de título se utilizó \textit{[nombre de la herramienta, ej. Claude, ChatGPT, Copilot]}, desarrollado por \textit{[nombre del editor/desarrollador]}, como apoyo en las siguientes tareas: \textit{[ej. revisión gramatical y de estilo del texto; generación de código de ejemplo en la sección de Anexos; asistencia en la estructuración del marco metodológico]}. Su uso se concentró específicamente en \textit{[capítulos o secciones, ej. el Capítulo de Metodología y el Anexo B]}.
+
+Todo el contenido generado o asistido por inteligencia artificial fue revisado, verificado y validado por el/la autor(a), quien asume la responsabilidad íntegra sobre la exactitud, originalidad y pertinencia del contenido final presentado en este documento.
+% ------------------------------------------------------------
+% DEDICATORIA (opcional)
+% ------------------------------------------------------------
+\chapter*{Dedicatoria (opcional)}
+Introducir opcionalmente una frase en la que se dedique el trabajo de título o grado a una o más personas particulares. Generalmente, las dedicatorias incluyen el tipo de vínculo con la(s) persona(s) a quien(es) se dedica el trabajo, su nombre de pila y la razón por la que se dedica el texto a esta persona. Por ejemplo: ``A mi hermana Patricia, por su apoyo constante''.
+
+\newpage
+
+% ------------------------------------------------------------
+% AGRADECIMIENTOS (opcional)
+% ------------------------------------------------------------
+\chapter*{Agradecimientos (opcional)}
+Introducir opcionalmente los agradecimientos que sean pertinentes ya sea a individuos, organizaciones, entre otros. Generalmente, los agradecimientos son presentados en primera persona, identificando el acto de habla ``agradecer'', las personas, grupos u organizaciones a las que se agradece y la razón. Por ejemplo: ``Agradezco especialmente a los(as) participantes de este estudio, quienes hicieron posible (\dots). Agradezco también a mis padres, quienes con su apoyo (\dots)''.
+
+\newpage
+
+% ------------------------------------------------------------
+% ÍNDICE
+% ------------------------------------------------------------
+\renewcommand{\contentsname}{Índice}
+\tableofcontents
+
+\newpage
+
+% ============================================================
+% CUERPO DEL DOCUMENTO
+% ============================================================
+
+\chapter*{Resumen}
+\addcontentsline{toc}{chapter}{Resumen}
+
+Este trabajo evalúa la seguridad del software y de la arquitectura de la
+plataforma Maria.ag de la empresa Gota SpA, implementa medidas de mitigación
+sobre los hallazgos priorizados y verifica su efectividad, tomando como
+referencia la Guía de Pruebas de Seguridad Web de OWASP, el OWASP Top 10 y el
+sistema de puntuación CVSS.
+
+\newpage
+
+\chapter*{Introducción}
+\addcontentsline{toc}{chapter}{Introducción}
+
+En este capítulo se presenta el contexto del trabajo realizado en esta memoria
+de título, la problemática que lo motiva, su justificación y los objetivos que
+se abordan.
+
+Gota SpA es una empresa especializada en soluciones de riego avanzadas, cuyo
+objetivo es mejorar el uso del agua en la agricultura, reducir costos y
+aumentar la productividad de los cultivos \autocite{gota}. Entre sus servicios
+cuenta con monitoreo de equipos de riego, instalación de equipos de telemetría
+y un software propio, Maria.ag, que utiliza un modelo de riego predictivo para
+regar de manera óptima, realiza un balance hídrico en tiempo real y entrega
+recomendaciones de cuándo y cuánto regar \autocite{gota,gota2024maria}.
+
+Maria.ag es una aplicación web multiusuario: cada empresa cliente accede
+mediante cuentas con credenciales propias y datos de campo que le son
+exclusivos (suelos, sectores de riego, especies cultivadas), por lo que la
+plataforma debe garantizar un aislamiento efectivo entre los distintos
+clientes que comparten la misma infraestructura. Sobre la base de los datos
+ingresados por el usuario y de la información recibida mediante integraciones
+externas, el modelo predictivo genera recomendaciones de riego que el usuario
+puede aceptar o complementar registrando riegos de forma manual. Estas
+recomendaciones y registros no permanecen únicamente dentro de la aplicación:
+Maria.ag se comunica mediante API con plataformas de terceros --como
+Dropcontrol, Talgil y Galcon-- a las que no solo consulta información
+meteorológica y de telemetría, sino a las que también envía instrucciones de
+riego para su ejecución. Esta última característica traslada una parte del
+riesgo de seguridad del plano exclusivamente digital al plano físico, ya que
+una falla en la validación de los datos que viajan hacia estas integraciones,
+o un acceso indebido a las credenciales que las habilitan, podría derivar en
+la activación incorrecta de equipos de riego en terreno.
+
+Según lo informado por la empresa, durante el desarrollo de la plataforma se
+priorizó alcanzar una operatividad mínima, dejando en segundo plano aspectos
+como la documentación o la realización de pruebas rigurosas de seguridad.
+Esta situación expone a la plataforma a posibles vulnerabilidades cuyo
+impacto puede ir desde la filtración o alteración de información de los
+clientes --incluyendo el acceso de una empresa a los datos de otra-- hasta la
+alteración del funcionamiento de la plataforma y, en el caso de las
+integraciones con capacidad de accionamiento, del propio proceso de riego en
+campo.
+
+Frente a este escenario, este trabajo propone realizar una evaluación de
+seguridad de la arquitectura y del software de Maria.ag, con especial
+atención al aislamiento entre clientes, a la autenticación y gestión de
+sesiones, a la validación de los datos ingresados y transmitidos, y a la
+seguridad de las integraciones con plataformas externas, seguida de la
+implementación de medidas de mitigación y de la verificación de su
+efectividad. Para ello, se utilizará como referencia la Guía de Pruebas de
+Seguridad Web de OWASP \autocite{owasp2024wstg}, el OWASP Top 10
+\autocite{owasp2025top10}, el sistema de puntuación CVSS
+\autocite{first2023cvss} y, dado el carácter de las integraciones externas de
+la plataforma, los lineamientos del OWASP API Security Top 10.
+
+El trabajo se justifica en la necesidad de proteger los datos de los clientes,
+la continuidad operativa de la aplicación, la integridad del proceso físico
+de riego que depende de ella y, según lo informado por la empresa, la
+ausencia de evaluaciones de seguridad previas en la empresa.
+
+El objetivo general y los objetivos específicos se presentan en los capítulos
+siguientes.
+
+\newpage
+
+\chapter*{Hipótesis}
+\addcontentsline{toc}{chapter}{Hipótesis}
+
+La aplicación de un proceso sistemático de evaluación de seguridad basado en metodologías y estándares reconocidos, junto con la posterior implementación de medidas de mitigación, permite reducir el número y la severidad de las vulnerabilidades en la plataforma Maria.ag.
+\newpage
+
+\chapter*{Preguntas de investigación}
+\addcontentsline{toc}{chapter}{Preguntas de investigación}
+
+\begin{itemize}[leftmargin=1.25cm]
+    \item ¿Cuáles son los principales activos, componentes y superficies de ataque de la plataforma Maria.ag?
+    \item ¿Qué vulnerabilidades y riesgos presenta la plataforma según la metodología WSTG, el OWASP Top 10 y la clasificación CVSS?
+    \item ¿Qué criterios permiten priorizar las vulnerabilidades para su mitigación dentro del tiempo disponible?
+    \item ¿En qué medida las mitigaciones implementadas reducen el número y la severidad de los hallazgos?
+\end{itemize}
+
+\newpage
+
+\chapter*{Objetivo general}
+\addcontentsline{toc}{chapter}{Objetivo general}
+
+El objetivo principal de este trabajo es evaluar y fortalecer la seguridad del software y de la arquitectura de la plataforma Maria.ag de la empresa Gota SpA, mediante la identificación de vulnerabilidades, la implementación de medidas de mitigación y la verificación de su efectividad, tomando como referencia la Guía de Pruebas de Seguridad Web de OWASP \autocite{owasp2024wstg}.
+\newpage
+
+\chapter*{Objetivos específicos}
+\addcontentsline{toc}{chapter}{Objetivos específicos}
+
+\begin{enumerate}[leftmargin=1.25cm]
+    \item Caracterizar la arquitectura, los componentes, las dependencias, los activos y los mecanismos de seguridad de la plataforma Maria.ag, delimitando su superficie de ataque y los requerimientos críticos del sistema.
+    \item Identificar y clasificar vulnerabilidades y riesgos técnicos mediante modelado de amenazas, análisis estático y dinámico, revisión de dependencias y evaluación de la arquitectura, utilizando como referencia la Guía de Pruebas de Seguridad Web de OWASP \autocite{owasp2024wstg}, el OWASP Top 10 \autocite{owasp2025top10} y el Sistema de Puntuación de Vulnerabilidades Comunes (CVSS) \autocite{first2023cvss} para la clasificación de severidad.
+    \item Priorizar los hallazgos según su severidad, impacto y factibilidad de intervención, y diseñar e implementar medidas de mitigación para un conjunto seleccionado de vulnerabilidades y problemas arquitectónicos.
+    \item Evaluar las mejoras implementadas mediante la repetición de las pruebas de seguridad y la comparación de indicadores antes y después de la intervención (número de hallazgos por severidad y puntajes CVSS), complementando los resultados con pruebas de regresión.
+\end{enumerate}
+\newpage
+
+% ------------------------------------------------------------
+% MARCO TEÓRICO
+% ------------------------------------------------------------
+\chapter*{Marco teórico}
+\addcontentsline{toc}{chapter}{Marco teórico}
+
+En este capítulo se presentan los conceptos, estándares y metodologías que
+sustentan la evaluación de seguridad desarrollada en este trabajo. Se abordan,
+en orden, los fundamentos de la seguridad de aplicaciones web, las
+metodologías y marcos de referencia utilizados para guiar la evaluación, los
+riesgos propios de arquitecturas multiusuario como la de Maria.ag, la
+seguridad de las interfaces de programación de aplicaciones (API) dado el rol
+central que estas cumplen en la plataforma, y las particularidades de
+seguridad que surgen cuando un sistema de software tiene capacidad de incidir
+sobre procesos físicos, como ocurre con el riego agrícola.
+
+\section*{Seguridad de la información y de las aplicaciones web}
+\addcontentsline{toc}{section}{Seguridad de la información y de las aplicaciones web}
+
+La seguridad de la información se organiza tradicionalmente en torno a tres
+propiedades conocidas como la tríada CIA: \textit{confidencialidad}, que
+garantiza que la información solo sea accesible para quienes están
+autorizados a conocerla; \textit{integridad}, que asegura que los datos no
+sean alterados de forma no autorizada o accidental; y \textit{disponibilidad},
+que asegura que los sistemas y datos estén accesibles cuando se requieran
+\autocite{stallings2018}. Estas tres propiedades constituyen el criterio base
+para clasificar el impacto de cualquier vulnerabilidad identificada durante la
+evaluación.
+
+En el caso particular de las aplicaciones web, la seguridad se ve condicionada
+por su arquitectura cliente-servidor y por la exposición pública de sus
+interfaces, lo que amplía la superficie de ataque respecto de aplicaciones de
+uso exclusivamente local. Los riesgos más comunes en este tipo de sistemas
+incluyen fallas en el control de acceso, en la validación de entradas, en la
+gestión de sesiones y en la configuración de los componentes que conforman la
+aplicación \autocite{owasp2025top10}.
+
+\section*{Metodologías y estándares de referencia}
+\addcontentsline{toc}{section}{Metodologías y estándares de referencia}
+
+\subsection*{OWASP Top 10}
+El \textit{Open Worldwide Application Security Project} (OWASP) es una
+comunidad abierta dedicada a mejorar la seguridad del software. Su proyecto
+OWASP Top 10 \autocite{owasp2025top10} identifica y describe las diez
+categorías de riesgo más críticas en aplicaciones web, construidas a partir de
+datos aportados por organizaciones de seguridad a nivel mundial. Entre estas
+categorías se encuentran el control de acceso roto (\textit{broken access
+control}), las fallas criptográficas, la inyección de código y las fallas de
+diseño relacionadas con la lógica de negocio de la aplicación. Este trabajo
+utiliza el OWASP Top 10 como taxonomía para clasificar los hallazgos
+identificados.
+
+\subsection*{OWASP Web Security Testing Guide (WSTG)}
+La Guía de Pruebas de Seguridad Web de OWASP \autocite{owasp2024wstg} es un
+marco metodológico que describe, de manera estructurada, los procedimientos
+para evaluar la seguridad de una aplicación web a lo largo de su ciclo de
+desarrollo. La guía organiza las pruebas en categorías --gestión de la
+configuración, autenticación, gestión de sesiones, validación de datos,
+lógica de negocio, entre otras-- y, para cada una, define objetivos, técnicas
+y criterios de verificación. En este trabajo, la WSTG se utiliza como
+procedimiento operativo para ejecutar la evaluación de seguridad de
+Maria.ag.
+
+\subsection*{Common Vulnerability Scoring System (CVSS)}
+El Common Vulnerability Scoring System \autocite{first2023cvss} es un
+estándar abierto que permite asignar una puntuación numérica a la severidad
+de una vulnerabilidad, a partir de métricas base --como el vector de ataque,
+la complejidad de explotación y el impacto sobre la confidencialidad,
+integridad y disponibilidad-- que pueden complementarse con métricas
+temporales y de entorno. La puntuación resultante, en una escala de 0 a 10,
+permite comparar y priorizar hallazgos de distinta naturaleza bajo un mismo
+criterio cuantitativo, lo que en este trabajo se utiliza tanto para priorizar
+las vulnerabilidades a mitigar como para comparar el estado de la plataforma
+antes y después de la intervención.
+
+\subsection*{Modelado de amenazas}
+El modelado de amenazas es un proceso estructurado para identificar, de forma
+anticipada, las posibles formas en que un sistema puede ser atacado, a partir
+de la descomposición de su arquitectura, la identificación de sus activos y
+puntos de confianza, y el análisis de los flujos de datos entre sus
+componentes. Un marco ampliamente utilizado con este fin es STRIDE, que
+clasifica las amenazas en seis categorías: suplantación de identidad
+(\textit{Spoofing}), alteración de datos (\textit{Tampering}), repudio
+(\textit{Repudiation}), divulgación de información (\textit{Information
+disclosure}), denegación de servicio (\textit{Denial of service}) y elevación
+de privilegios (\textit{Elevation of privilege}) \autocite{shostack2014}. En
+este trabajo, el modelado de amenazas se utiliza como insumo previo a las
+pruebas dinámicas, para orientar el esfuerzo de evaluación hacia los
+componentes y flujos de mayor riesgo.
+
+\section*{Control de acceso en arquitecturas multiusuario}
+\addcontentsline{toc}{section}{Control de acceso en arquitecturas multiusuario}
+
+Maria.ag opera bajo un modelo en que múltiples empresas clientes comparten la
+misma instancia de la aplicación e infraestructura, cada una con sus propios
+datos y usuarios. Este tipo de arquitectura, conocida como
+\textit{multiusuario} o \textit{multi-tenant}, requiere que el control de
+acceso se aplique de forma consistente en cada operación del sistema y no
+únicamente a nivel de interfaz, de modo que un usuario autenticado solo pueda
+leer o modificar los recursos que le pertenecen \autocite{owasp2025top10}.
+
+Cuando esta verificación falla, se produce lo que OWASP clasifica como
+control de acceso roto, cuya manifestación más frecuente es la referencia
+directa insegura a objetos (\textit{Insecure Direct Object Reference}, IDOR):
+un identificador de un recurso --por ejemplo, el de un sector de riego o un
+registro de riego manual-- es manipulado por el usuario para acceder a
+recursos que pertenecen a otra cuenta o empresa, sin que el servidor verifique
+la propiedad del recurso solicitado. Dado el modelo multiusuario de Maria.ag,
+este trabajo otorga especial relevancia a la verificación del control de
+acceso entre clientes y entre roles dentro de una misma cuenta.
+
+\section*{Seguridad de interfaces de programación de aplicaciones (API)}
+\addcontentsline{toc}{section}{Seguridad de interfaces de programación de aplicaciones (API)}
+
+Una parte sustancial de la funcionalidad de Maria.ag se sustenta en el
+intercambio de información con plataformas externas a través de API, tanto
+para la obtención de datos meteorológicos y de telemetría como para el envío
+de recomendaciones de riego hacia sistemas de terceros. Esta dependencia hace
+pertinente incorporar al marco de referencia de este trabajo los riesgos
+específicos de las API, los cuales no siempre son cubiertos en su totalidad
+por las guías orientadas a aplicaciones web tradicionales.
+
+El OWASP API Security Top 10 describe los riesgos más críticos en este tipo
+de interfaces, entre los que se cuentan la autorización rota a nivel de
+objeto, la asignación masiva de propiedades no esperadas en una petición, la
+exposición excesiva de datos en las respuestas, y la ausencia de límites de
+uso (\textit{rate limiting}) que permitan contener el abuso de un endpoint.
+Adicionalmente, cuando una API actúa como intermediaria hacia un sistema
+externo, cobra relevancia el correcto manejo de las credenciales de dicha
+integración --su almacenamiento, rotación y alcance de permisos-- así como la
+validación de los datos antes de reenviarlos, para evitar que un valor
+manipulado por el cliente sea transmitido sin control hacia la plataforma de
+destino.
+
+\section*{Seguridad en sistemas con componentes ciberfísicos}
+\addcontentsline{toc}{section}{Seguridad en sistemas con componentes ciberfísicos}
+
+A diferencia de una aplicación web convencional, Maria.ag forma parte de un
+sistema ciberfísico: sus recomendaciones y registros de riego son transmitidos
+a plataformas externas que gestionan equipamiento de riego en terreno
+(bombas, válvulas, controladores), por lo que una vulnerabilidad en el
+software puede manifestarse como un efecto físico sobre el cultivo o la
+infraestructura de riego, y no únicamente como una filtración o alteración de
+datos. Esta característica es análoga a la que se observa en los sistemas de
+control industrial y en el Internet de las Cosas (IoT) aplicado a la
+agricultura de precisión, donde la literatura ha documentado que errores de
+validación o fallas de autenticación en la capa de software pueden escalar a
+consecuencias operativas y económicas sobre el proceso físico que dicho
+software supervisa o controla \autocite{fathy2023secure}. En este trabajo,
+esta consideración se traduce en un énfasis particular sobre la validación de
+los datos que viajan hacia las integraciones con capacidad de accionamiento, y
+sobre los mecanismos que evitan la duplicación o ejecución no intencionada de
+una orden de riego.
+
+\newpage
+% ------------------------------------------------------------
+% REFERENCIAS
+% ------------------------------------------------------------
+\chapter*{Referencias}
+\addcontentsline{toc}{chapter}{Referencias}
+
+\vspace{0.5cm}
+
+\printbibliography[heading=none]
+
+\newpage
+
+
+\end{document}
