@@ -17,3 +17,7 @@
 [8] A. Shostack, *Threat Modeling: Designing for Security*. Indianápolis, IN: Wiley, 2014.
 
 [9] C. Fathy y H. M. Ali, "A Secure IoT-Based Irrigation System for Precision Agriculture Using the Expeditious Cipher," *Sensors*, vol. 23, n.º 4, pág. 2091, 2023. DOI: [10.3390/s23042091](https://doi.org/10.3390/s23042091).
+
+[10] OWASP Foundation. «OWASP API Security Top 10:2023,» visitado 14 de oct. de 2026.
+dirección: https://owasp.org/API-Security/editions/2023/en/0x00-header/
+17

@@ -1,0 +1,3 @@
+# Hipótesis
+
+La aplicación de un proceso sistemático de evaluación de seguridad, basado en la Guía de Pruebas de Seguridad Web de OWASP, el OWASP Top 10 y el sistema de puntuación CVSS, seguida de la implementación priorizada de medidas de mitigación sobre los hallazgos de mayor severidad --en particular aquellos relacionados con el aislamiento entre clientes, la autenticación y gestión de sesiones, la validación de datos y la seguridad de las integraciones con plataformas externas--, permite reducir el número y la severidad de las vulnerabilidades de la plataforma Maria.ag, sin afectar su funcionamiento normal.
