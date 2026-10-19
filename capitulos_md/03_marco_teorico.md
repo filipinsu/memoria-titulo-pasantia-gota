@@ -16,13 +16,13 @@ Los diagramas que siguen se elaboraron a partir de la política de privacidad de
 
 La Figura 1 presenta el diagrama de contexto (C1). En él se observa que Maria.ag es utilizada por dos tipos de actores –el personal de las empresas clientes y el personal de Gota SpA– y que se comunica con cinco sistemas externos: Agroclima, del que obtiene datos meteorológicos; Dropcontrol y Talgil, con los que intercambia telemetría y a los que además envía recomendaciones de riego para su ejecución; Galcon, al que envía recomendaciones de riego; y Hotjar/Microsoft Clarity, que recopila analítica de navegación sin que esos datos se almacenen en la base de datos de la plataforma. Las integraciones con capacidad de accionamiento –Dropcontrol, Talgil y Galcon– son, de acuerdo con lo discutido en la sección anterior, las de mayor relevancia para este trabajo, pues son las que trasladan un eventual error de software hacia el proceso físico de riego.
 
-![Diagrama de contexto (C1) de Maria.ag](images/c4-context.pdf)
+![Diagrama de contexto (C1) de Maria.ag](images/c4_contexto.png)
 
 **Figura 1.** Diagrama de contexto (C1) de Maria.ag, elaborado a partir de la política de privacidad de la plataforma y de la información recabada durante la pasantía. Pendiente de validación con el equipo de desarrollo de Gota SpA.
 
 La Figura 2 hace un acercamiento (C2) al interior de Maria.ag y distingue cuatro contenedores: una *aplicación web*, con la que interactúa el usuario desde su navegador; una *API o backend*, que concentra la autenticación, el control de acceso y la orquestación de las integraciones externas; un *motor de recomendación*, que ejecuta el modelo predictivo de riego; y una *base de datos*, que almacena las cuentas, los datos de suelos y sectores, los registros de riego manual y la información recibida de las integraciones. Bajo esta hipótesis de arquitectura, la API/backend es el componente que concentra la mayor superficie de ataque, al ser el punto donde confluyen la autenticación de los usuarios, el control de acceso entre empresas clientes y la comunicación con los sistemas externos con capacidad de accionamiento.
 
-![Diagrama de contenedores (C2) de Maria.ag](images/c4-container.pdf)
+![Diagrama de contenedores (C2) de Maria.ag](images/c4_contenedores.png)
 
 **Figura 2.** Diagrama de contenedores (C2) de Maria.ag: bloques principales de software y sus relaciones, bajo la misma hipótesis de arquitectura que la Figura 1.
 
