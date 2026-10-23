@@ -4,6 +4,6 @@
 
 - ¿Qué vulnerabilidades y riesgos presenta la plataforma al ser evaluada según la metodología WSTG, y cómo se clasifican según el OWASP Top 10 y su severidad según CVSS?
 
-- ¿Qué criterios (severidad, impacto sobre el proceso físico de riego y factibilidad de intervención) permiten priorizar las vulnerabilidades para su mitigación dentro del tiempo disponible?
+- ¿Qué criterios (severidad, impacto sobre el proceso físico de riego y factibilidad de intervención) permiten priorizar las vulnerabilidades, y qué medidas de mitigación corresponde proponer para cada una?
 
-- ¿En qué medida las mitigaciones implementadas reducen el número y la severidad de los hallazgos, y se logra esta reducción sin introducir regresiones en el funcionamiento de la plataforma?
+- ¿Qué reducción del riesgo se estima que lograría la aplicación de las medidas propuestas, y qué tan factibles son según el equipo de desarrollo de Gota SpA?
